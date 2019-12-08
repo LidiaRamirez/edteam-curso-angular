@@ -232,3 +232,37 @@ npm install bootstrap font-awesome --save
 ~~~
 y en el archivo styles.css se debe agregar `@import "~bootstrap/dist/css/bootstrap.min.css` y `@import "~font-awesome/css/font-awesome.min.css`
 
+## Directivas
+
+### Directivas Personalizada
+Elemento HTML personalizado
+Ej:
+~~~
+selector: 'ed-root'
+Uso:
+<ed-root></ed-root>
+~~~
+
+### Directivas Estructurales
+
+Manipulan la estructura del DOM, como agregar, eliminar, actualizar elementos. las más conocidas son **ngIf* y **ngFor*
+
+#### Directiva ngIf
+~~~
+<div *ngIf="expresion-booleana" > algo </div>
+~~~
+
+#### Directiva ngIf
+~~~
+<li *ngFor="let item of objeto" > item.id </li>
+~~~
+
+#### Directiva ngSwitch
+Ej:
+~~~
+<div [ngSwitch]=dia>
+  <p *ngSwitchCase="'lunes'">Iniciando la semana</p>
+  <p *ngSwitchCase="'viernes'">LLega el fin de semana</p>
+  <p *ngSwitchDefault>Un día radiante</p>
+</div>
+~~~

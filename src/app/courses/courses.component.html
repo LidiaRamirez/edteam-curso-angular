@@ -2,7 +2,7 @@
   <div class="card-header">
     {{ title }}
   </div>
-  <div class="card-body">
+  <div *ngIf="courses && courses.length > 0" class="card-body">
     <div>
       <table class="table">
         <thead>
@@ -15,33 +15,27 @@
           <th>Acciones</th>
         </thead>
         <tbody>
-          <tr>
-            <td><img [src]="imageUrl" [style.width]="anchoImagen"></td>
-            <td>Angular</td>
-            <td>Angular desde Cero</td>
-            <td>20 sept 2019</td>
-            <td>29.99</td>
-            <td>4.9</td>
+          <tr *ngFor="let course of courses">
+            <td><img [src]="course.imageUrl" [style.width]="anchoImagen"></td>
+            <td>{{ course.name }}</td>
+            <td>{{ course.description }}</td>
+            <td>{{ course.startDate }}</td>
+            <td>{{ course.price }}</td>
+            <td>{{ course.rating }}</td>
             <td>
-              <span style="margin-right: 20px;" (click)="editCourse(courses[0])">
+              <span style="margin-right: 20px;" (click)="editCourse(course)">
                 <i class="fa fa-edit"></i>
               </span>
               <span>
-                <i class="fa fa-trash" (click)="deleteCourse(courses[0])"></i>
+                <i class="fa fa-trash" (click)="deleteCourse(course)"></i>
               </span>
             </td>
-          </tr>
-          <tr>
-            <td>Icono</td>
-            <td>Angular</td>
-            <td>Angular desde Cero</td>
-            <td>20 sept 2019</td>
-            <td>29.99</td>
-            <td>4.9</td>
-            <td></td>
           </tr>
         </tbody>
       </table>
     </div>
+  </div>
+  <div *ngIf="!courses || courses.length === 0" class="alert alert-info" role="alert">
+      No existen cursos disponibles. Intente más tarde.
   </div>
 </div>
