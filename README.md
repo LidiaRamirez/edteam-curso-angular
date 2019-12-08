@@ -1,27 +1,234 @@
-# EdteamCursoAngular
+# Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+## Angular CLI
+~~~
+npm install -g @angular/cli
+~~~
 
-## Development server
+Abarca:
+- Scaffold: Generar una estructura inicial de archivos para proyecto, configuraciones.
+- Preview: Vista previa
+- Local Build: Proceso para construir el JS, los scripts necesarios.
+- Local Testing, Unit Test, E2E test: Pruebas para verificar código, clases, servicios
+- Best Practices: Reglas, combinar las mejores practicas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Crear aplicación / proyecto forma básica
+~~~
+ng new nombre-proyecto
+~~~
 
-## Code scaffolding
+Y consultará si se desea agregar angular routing, formato de estilos (css, sass)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Crear proyecto/aplicacion con más opciones
+~~~
+ng new nombre-proyecto --routing
+                       --prefix letras-prefix
+                       --style css
+                       --skip-install
+~~~ 
+Opciones de personalización:
+- --routing: Módulo de manejo de rutas
+- --prefix: Prefijo para componentes, directivas, servicios
+- --skip: Permite generar la estructura sin dependencias
+- --style: Para definir con que vamos a trabajar css, preprocesadores ej. Sass
 
-## Build
+Al finalizar, se debe ejecutar el `npm install` para instalar las dependencias
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Para ejecutar proyecto
+~~~
+ng serve
+ng serve --port numeroPuerto
+~~~
 
-## Running unit tests
+El puerto por defecto es 4200
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Para ejecutar los test
+~~~
+ng test
+~~~
 
-## Running end-to-end tests
+test end to end
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+~~~
+ng e2e
+~~~
 
-## Further help
+## Para verifuicar si se esta utilizando buenas practicas
+~~~
+ng lint
+~~~
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Generación de código con angular CLI
+
+~~~
+ng generate <contenido> [opciones]
+~~~
+
+### Clases
+~~~
+ng generate class <nombre> [opciones]
+Ej: ng generate class curso
+~~~
+
+Lo que genera dos archivos *nombre.ts* (lógica) y *nombre.spect.ts*
+
+### Interfaces
+~~~
+ng generate interface <nombre> [opciones]
+Ej: ng generate interface escuela
+~~~
+
+### Enumerados
+~~~
+ng generate enum <nombre> [opciones]
+Ej: ng generate enum dia
+~~~
+
+### Componentes
+~~~
+ng generate component <nombre> [opciones]
+Ej: ng generate component escuela-digital
+~~~
+
+### Módulos
+~~~
+ng generate component <nombre> [opciones]
+Ej: ng generate component escuela-digital
+~~~
+
+### Servicios
+~~~
+ng generate service <nombre> [opciones]
+Ej: ng generate service escuela-digital
+~~~
+
+### Directivas
+~~~
+ng generate directive <nombre> [opciones]
+Ej: ng generate directive escuela-digital
+~~~
+
+### Pipes
+~~~
+ng generate pipe <nombre> [opciones]
+Ej: ng generate pipe filtro
+~~~
+
+## Desplegando localmente el build
+Es decir lo que el usuario va a ver
+
+~~~
+ng build
+~~~
+
+### Generación del Build de producción
+Archivos más optimos
+~~~
+ng build --prod
+~~~
+y si quieremos corroborar con algun servidor 
+
+~~~
+npm install -g http-server
+http-server dist/nombre-proyecto
+~~~
+
+## Componentes en angular
+
+Se basa en archivos de template y component que se enlazan con property binding o se comunican con event binding.
+Los componentes se conforman de plantilla (template, HTML), estilos, clases (propiedades, métodos), metadatos (decorador, función, propiedades)
+
+## Creación de componentes
+
+### Forma manual
+
+- Crear archivo con extensión .ts
+- Usar un sufijo por convención `.component.ts`
+- Definir una clase TypeScript
+- Decorar la clase con @Component (metadatos)
+- Importar de @angular/core
+- Usar opcioees de configuración (decorador)
+
+~~~
+import { Component } from '@angular/core';
+
+// Decorador + metadatos
+@Component({
+  selector: 'nombre',
+  templateUrl: './nombre.component.html',
+  styleUrls: ['./nombre.component.css']
+})
+
+export class NombreComponent {
+  // Propiedades, métodos, consumo de servicios
+}
+~~~
+
+Angular tiene paquetes que tienen clases, modulos de donde importar, lo más utilizados son:
+- @angular/core
+- @angular/common/http
+- @angular/animate
+- @angular/router
+
+Otros: [https://angular.io/api?type=package](https://angular.io/api?type=package)
+
+### Forma con comandos
+
+~~~
+ng generate component <nombre> [opciones]
+~~~
+
+Genera 04 archivos html, typescript, estilos y spec.ts
+
+## Interpolación
+
+Se puede asignar un valor de la clase a la plantilla a través de un template expression (expresión de plantilla) {{ }}. Ej:
+
+~~~
+<p> {{ title }} </p>
+<img src="{{imageURL}}">
+~~~
+
+## Binding
+### Property Binding
+Las propiedades pueden ser definidas desde la clase y se identifica con los [ ]. Ej:
+
+~~~
+<img [src]="imageURL">
+<button [disabled] = "deshabilitado">Boton deshabilitado</button>
+~~~
+
+### Event Binding
+Permite comunicar cambios desde la plantilla a la clase con ( ), el evento objetivo va con () y lo que sigue es método de clase.
+
+~~~
+<button (click)="onSave()"> Save </button>
+~~~
+
+### Atribute, Class and Style Binding
+Podemos lograr dinamismo con el binding en atributo, en clase y en estilo
+
+~~~
+<button [attr.aria-label]="help"> ayuda </button>
+<div [class.special]="esEspecial"> especial </div>
+<button [style.color]="esEspecial ? 'red' : 'green'"> boton </button>
+~~~
+
+## Pipes
+
+- Toma un dato como entrada y lo transforma
+- Se establece un "formato" para la salida
+- Soporta parámetros
+
+Ej:
+
+~~~
+<p> {{ fecha | date | lowercase }} </p>
+~~~
+
+## Instalar boostrap y font-awesome
+~~~
+npm install bootstrap font-awesome --save
+~~~
+y en el archivo styles.css se debe agregar `@import "~bootstrap/dist/css/bootstrap.min.css` y `@import "~font-awesome/css/font-awesome.min.css`
+

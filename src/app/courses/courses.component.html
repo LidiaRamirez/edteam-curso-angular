@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-header">
+    {{ title }}
+  </div>
+  <div class="card-body">
+    <div>
+      <table class="table">
+        <thead>
+          <th>Logo</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Fecha de  inicio</th>
+          <th>Precio</th>
+          <th>Rating</th>
+          <th>Acciones</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img [src]="imageUrl" [style.width]="anchoImagen"></td>
+            <td>Angular</td>
+            <td>Angular desde Cero</td>
+            <td>20 sept 2019</td>
+            <td>29.99</td>
+            <td>4.9</td>
+            <td>
+              <span style="margin-right: 20px;" (click)="editCourse(courses[0])">
+                <i class="fa fa-edit"></i>
+              </span>
+              <span>
+                <i class="fa fa-trash" (click)="deleteCourse(courses[0])"></i>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>Icono</td>
+            <td>Angular</td>
+            <td>Angular desde Cero</td>
+            <td>20 sept 2019</td>
+            <td>29.99</td>
+            <td>4.9</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
