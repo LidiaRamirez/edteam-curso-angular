@@ -266,3 +266,7 @@ Ej:
   <p *ngSwitchDefault>Un día radiante</p>
 </div>
 ~~~
+
+## Propiedad @input
+
+Permite pasar propiedades de un componente padre a componente hijo
