@@ -269,4 +269,20 @@ Ej:
 
 ## Propiedad @input
 
-Permite pasar propiedades de un componente padre a componente hijo
+Permite pasar propiedades de un componente padre a componente hijo. Ej:
+
+~~~
+<parent-component>
+  <child-component [prop]="value"></child-component>
+</parent-component>
+~~~
+
+## Propiedad @output y EventEmiter
+
+Permite pasar propiedades de un componente hijo a componente padre. El EventEmiter debe ser importado de '@angular/core' Ej:
+
+~~~
+<parent-component>
+  <child-component (event)="method()"></child-component>
+</parent-component>
+~~~

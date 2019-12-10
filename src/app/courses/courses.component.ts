@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Curso } from '../curso';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ed-courses',
@@ -41,17 +43,21 @@ export class CoursesComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  editCourse(course: any) {
-    console.log(course)
+  onEditCurso(curso: Curso) {
+    console.log('[Courses] Edit', curso);
+    // Redirección: course/{curso.id}
+    this.router.navigate([`course/${curso.id}`])
   }
 
-  deleteCourse(course: any) {
-    console.log(course)
+  onDeleteCurso(curso: Curso) {
+    console.log('[Courses] Delete', curso);
+    this.courses = this.courses.filter((c: Curso) => {
+      return c.id !== curso.id
+    });
   }
-
 }
