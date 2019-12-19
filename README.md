@@ -286,3 +286,51 @@ Permite pasar propiedades de un componente hijo a componente padre. El EventEmit
   <child-component (event)="method()"></child-component>
 </parent-component>
 ~~~
+
+## @ViewChild
+
+Acceder a elementos html desde componentes, aunque no es una buena practica. Para ello se debe agregar al elemento una variable referencia de plantilla (#)
+
+~~~
+<input #filtro type="text" />
+~~~
+~~~
+@ViewChild('filtro', {static: false})
+filtro: ElementRef;
+
+ngAfterViewInit() {
+  this.filtro.nativeElement.value = 'Angular';
+}
+~~~
+
+## Módulos
+
+- Configura el inyector y el compilador para organizar contenido relacionado.
+- Es una clase TypeScript marcada con @NgModule
+- Consolidan componentes, directivas y pipes en bloques de funcionalidad
+- Se suelen enfocar en: Features de la aplicación, un dominio de la lógica de   negocio, colección común o utilitarios
+
+~~~
+@NgModules({ // decorador
+  declarations: [
+    // declaración de componentes, directivas y pipes que forman parte del módulo
+  ],
+  imports: [
+    // Otros módulos que vayan a necesitar los componentes del módulo actual
+  ],
+  providers: [// provee servicios que los componentes vayan a usar]
+})
+~~~
+
+## Inyección de Dependencias
+
+- Permite el paso de objetos como dependecias
+- Es un patrón de diseño Orientado a Objetos 
+- Los objetos se pueden pasar a componentes
+- Pueden estar disponibles en toda la aplicación
+- El patrón permite la creación de instancias
+
+## Servicios
+- Servicio es una categoría amplia que abarca cualquier valor, función o característica para la aplicación
+- Típicamente es un clase con un propósito bien definido
+- Debe ser específico, que permite resolver el problema lo más eficiente y hacerlo bien y que sea lo más pequeño posible.
