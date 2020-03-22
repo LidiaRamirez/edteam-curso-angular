@@ -1,6 +1,8 @@
 # Angular
 
 ## Angular CLI
+
+Para trabajar con angular se requiere instalar angular
 ~~~
 npm install -g @angular/cli
 ~~~
@@ -12,7 +14,7 @@ Abarca:
 - Local Testing, Unit Test, E2E test: Pruebas para verificar código, clases, servicios
 - Best Practices: Reglas, combinar las mejores practicas
 
-## Crear aplicación / proyecto forma básica
+## Crear aplicación / proyecto forma básica en angular
 ~~~
 ng new nombre-proyecto
 ~~~
@@ -29,7 +31,7 @@ ng new nombre-proyecto --routing
 Opciones de personalización:
 - --routing: Módulo de manejo de rutas
 - --prefix: Prefijo para componentes, directivas, servicios
-- --skip: Permite generar la estructura sin dependencias
+- --skip-install: Permite generar la estructura sin dependencias
 - --style: Para definir con que vamos a trabajar css, preprocesadores ej. Sass
 
 Al finalizar, se debe ejecutar el `npm install` para instalar las dependencias
@@ -53,7 +55,7 @@ test end to end
 ng e2e
 ~~~
 
-## Para verifuicar si se esta utilizando buenas practicas
+## Para verificar si se esta utilizando buenas practicas
 ~~~
 ng lint
 ~~~
@@ -77,24 +79,29 @@ Lo que genera dos archivos *nombre.ts* (lógica) y *nombre.spect.ts*
 ng generate interface <nombre> [opciones]
 Ej: ng generate interface escuela
 ~~~
+Lo que genera un archivo *nombre.ts*
 
 ### Enumerados
 ~~~
 ng generate enum <nombre> [opciones]
 Ej: ng generate enum dia
 ~~~
+Lo que genera un archivo *nombre.enum.ts*
 
 ### Componentes
 ~~~
 ng generate component <nombre> [opciones]
 Ej: ng generate component escuela-digital
 ~~~
+Lo que genera archivos *nombre.component.html*, *nombre.component.css*, *nombre.component.ts* y *nombre.component.spect.ts*
 
 ### Módulos
 ~~~
 ng generate component <nombre> [opciones]
 Ej: ng generate component escuela-digital
 ~~~
+
+Lo que genera un archivo *nombre.module.ts*
 
 ### Servicios
 ~~~
